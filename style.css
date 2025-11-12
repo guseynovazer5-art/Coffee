@@ -1,0 +1,587 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: #2c3e50;
+    line-height: 1.6;
+    overflow-x: hidden;
+    background: linear-gradient(135deg, 
+        #5D4037 0%, 
+        #8B4513 25%, 
+        #A0522D 50%, 
+        #D2691E 75%, 
+        #F4A460 100%);
+    min-height: 100vh;
+    padding: 0;
+    margin: 0;
+}
+
+.app {
+    max-width: 100%;
+    margin: 0 auto;
+    min-height: 100vh;
+    background: transparent; /* Полностью прозрачный */
+    backdrop-filter: blur(10px);
+    position: relative;
+}
+
+/* Шапка */
+.header {
+    background: linear-gradient(135deg, rgba(93, 64, 55, 0.9), rgba(139, 69, 19, 0.9));
+    color: white;
+    padding: 25px 20px;
+    text-align: center;
+    position: relative;
+    border-bottom: 3px solid #D2691E;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+    backdrop-filter: blur(10px);
+}
+
+.logo h1 {
+    font-size: 28px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    margin-bottom: 5px;
+    text-transform: uppercase;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+}
+
+.logo p {
+    font-size: 14px;
+    opacity: 0.9;
+    letter-spacing: 1px;
+    font-weight: 300;
+}
+
+.balance {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    background: rgba(210, 105, 30, 0.9);
+    padding: 8px 15px;
+    border-radius: 20px;
+    font-size: 14px;
+    font-weight: 600;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+}
+
+/* Вкладки */
+.tabs {
+    display: flex;
+    background: linear-gradient(135deg, rgba(139, 69, 19, 0.9), rgba(160, 82, 45, 0.9));
+    border-bottom: 2px solid #D2691E;
+    overflow-x: auto;
+    backdrop-filter: blur(10px);
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+}
+
+.tab-btn {
+    flex: 1;
+    padding: 18px 12px;
+    border: none;
+    background: transparent;
+    font-size: 13px;
+    font-weight: 600;
+    color: #ecf0f1;
+    border-bottom: 3px solid transparent;
+    white-space: nowrap;
+    min-width: 90px;
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+.tab-btn.active {
+    color: #FFD700;
+    border-bottom-color: #FFD700;
+    background: rgba(93, 64, 55, 0.8);
+    text-shadow: 0 1px 2px rgba(0,0,0,0.3);
+}
+
+.tab-btn:hover {
+    background: rgba(210, 105, 30, 0.3);
+}
+
+/* Контент вкладок */
+.tab-content {
+    padding: 0;
+}
+
+.tab-pane {
+    display: none;
+    padding: 20px;
+    animation: fadeIn 0.5s ease;
+}
+
+.tab-pane.active {
+    display: block;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* Категории */
+.category h2 {
+    margin-bottom: 25px;
+    color: white;
+    font-size: 22px;
+    text-align: center;
+    padding: 15px;
+    background: rgba(139, 69, 19, 0.8);
+    border-radius: 15px;
+    font-weight: 700;
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.3);
+    border: 2px solid #FFD700;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+    backdrop-filter: blur(10px);
+}
+
+.menu-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+/* Элементы меню */
+.menu-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    padding: 20px;
+    background: rgba(255, 255, 255, 0.9);
+    border-radius: 15px;
+    border-left: 5px solid #D2691E;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(139, 69, 19, 0.2);
+    cursor: pointer;
+    position: relative;
+}
+
+.menu-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 25px rgba(139, 69, 19, 0.3);
+    background: rgba(255, 255, 255, 0.95);
+}
+
+.item-info {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.item-name {
+    font-size: 18px;
+    font-weight: 700;
+    color: #5D4037;
+}
+
+.item-desc {
+    font-size: 14px;
+    color: #7f8c8d;
+    font-style: italic;
+    line-height: 1.4;
+}
+
+/* Селектор размера */
+.size-selector {
+    margin-top: 12px;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.size-option {
+    display: flex;
+    align-items: center;
+    padding: 10px 14px;
+    background: rgba(245, 230, 211, 0.9);
+    border-radius: 10px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-size: 13px;
+    border: 2px solid transparent;
+    font-weight: 500;
+}
+
+.size-option:hover {
+    background: rgba(210, 105, 30, 0.2);
+    border-color: #D2691E;
+    transform: translateX(5px);
+}
+
+.size-option input[type="radio"] {
+    margin-right: 10px;
+    transform: scale(1.2);
+    accent-color: #D2691E;
+}
+
+.size-option input[type="radio"]:checked + span {
+    font-weight: 700;
+    color: #8B4513;
+    text-shadow: 0 1px 2px rgba(0,0,0,0.1);
+}
+
+.size-option:has(input[type="radio"]:checked) {
+    background: linear-gradient(135deg, rgba(210, 105, 30, 0.2), rgba(139, 69, 19, 0.15));
+    border-color: #8B4513;
+    box-shadow: 0 2px 8px rgba(139, 69, 19, 0.2);
+}
+
+.item-price {
+    font-size: 20px;
+    font-weight: 700;
+    color: #8B4513;
+    margin: 0 15px;
+    min-width: 80px;
+    text-align: right;
+    align-self: flex-start;
+}
+
+.add-btn {
+    background: linear-gradient(135deg, #D2691E, #8B4513);
+    color: white;
+    border: none;
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    font-size: 20px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(139, 69, 19, 0.3);
+    align-self: flex-start;
+    flex-shrink: 0;
+}
+
+.add-btn:hover {
+    transform: scale(1.1);
+    box-shadow: 0 6px 20px rgba(139, 69, 19, 0.4);
+    background: linear-gradient(135deg, #8B4513, #5D4037);
+}
+
+/* Корзина */
+.cart-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 25px;
+    padding-bottom: 15px;
+    border-bottom: 2px solid #D2691E;
+}
+
+.cart-header h2 {
+    color: white;
+    font-size: 24px;
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.3);
+}
+
+.clear-btn {
+    background: #e74c3c;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 8px;
+    font-size: 14px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 8px rgba(231, 76, 60, 0.3);
+}
+
+.clear-btn:hover {
+    background: #c0392b;
+    transform: scale(1.05);
+    box-shadow: 0 4px 12px rgba(231, 76, 60, 0.4);
+}
+
+.cart-items {
+    margin-bottom: 25px;
+    max-height: 50vh;
+    overflow-y: auto;
+}
+
+.cart-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 18px;
+    margin: 12px 0;
+    background: rgba(255, 255, 255, 0.95);
+    border-radius: 12px;
+    border-left: 4px solid #D2691E;
+    box-shadow: 0 3px 10px rgba(139, 69, 19, 0.2);
+    animation: slideIn 0.3s ease;
+}
+
+@keyframes slideIn {
+    from { opacity: 0; transform: translateX(-20px); }
+    to { opacity: 1; transform: translateX(0); }
+}
+
+.cart-item-info {
+    flex: 1;
+}
+
+.cart-item-name {
+    font-weight: 600;
+    color: #5D4037;
+    font-size: 16px;
+    margin-bottom: 4px;
+}
+
+.cart-item-desc {
+    color: #7f8c8d;
+    font-size: 13px;
+    font-style: italic;
+    margin-bottom: 4px;
+}
+
+.cart-item-quantity {
+    color: #7f8c8d;
+    font-size: 14px;
+}
+
+.cart-item-price {
+    font-weight: 700;
+    color: #8B4513;
+    font-size: 18px;
+    margin: 0 15px;
+    min-width: 80px;
+    text-align: right;
+}
+
+.cart-item-actions {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.quantity-btn {
+    background: #3498db;
+    color: white;
+    border: none;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    cursor: pointer;
+    font-weight: bold;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 6px rgba(52, 152, 219, 0.3);
+}
+
+.quantity-btn:hover {
+    background: #2980b9;
+    transform: scale(1.1);
+    box-shadow: 0 4px 10px rgba(52, 152, 219, 0.4);
+}
+
+.remove-btn {
+    background: #e74c3c;
+    color: white;
+    border: none;
+    padding: 6px 12px;
+    border-radius: 6px;
+    font-size: 12px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 6px rgba(231, 76, 60, 0.3);
+}
+
+.remove-btn:hover {
+    background: #c0392b;
+    transform: scale(1.05);
+    box-shadow: 0 4px 10px rgba(231, 76, 60, 0.4);
+}
+
+.cart-total {
+    position: sticky;
+    bottom: 0;
+    background: rgba(255, 255, 255, 0.98);
+    padding: 25px;
+    border-top: 3px solid #D2691E;
+    margin: 0 -20px -20px;
+    backdrop-filter: blur(10px);
+    box-shadow: 0 -4px 20px rgba(0,0,0,0.1);
+}
+
+.total-line {
+    display: flex;
+    justify-content: space-between;
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 20px;
+    color: #5D4037;
+    padding: 0 10px;
+}
+
+.whatsapp-btn, .pickup-btn {
+    width: 100%;
+    padding: 20px;
+    border: none;
+    border-radius: 12px;
+    font-size: 18px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin-bottom: 12px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+    position: relative;
+    overflow: hidden;
+}
+
+.whatsapp-btn {
+    background: linear-gradient(135deg, #25D366, #128C7E);
+    color: white;
+}
+
+.pickup-btn {
+    background: linear-gradient(135deg, #D2691E, #8B4513);
+    color: white;
+}
+
+.whatsapp-btn:hover {
+    background: linear-gradient(135deg, #128C7E, #25D366);
+    transform: scale(1.02);
+    box-shadow: 0 6px 20px rgba(37, 211, 102, 0.4);
+}
+
+.pickup-btn:hover {
+    background: linear-gradient(135deg, #8B4513, #5D4037);
+    transform: scale(1.02);
+    box-shadow: 0 6px 20px rgba(139, 69, 19, 0.4);
+}
+
+.whatsapp-btn:active, .pickup-btn:active {
+    transform: scale(0.98);
+}
+
+/* Уведомления */
+.notification {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    background: linear-gradient(135deg, #27ae60, #2ecc71);
+    color: white;
+    padding: 20px 25px;
+    border-radius: 12px;
+    z-index: 1000;
+    font-weight: bold;
+    box-shadow: 0 6px 20px rgba(0,0,0,0.3);
+    transform: translateX(400px);
+    transition: transform 0.4s ease;
+    max-width: 300px;
+    text-align: center;
+}
+
+.notification.show {
+    transform: translateX(0);
+}
+
+/* Адаптивность */
+@media (max-width: 480px) {
+    .logo h1 {
+        font-size: 22px;
+    }
+    
+    .tab-btn {
+        font-size: 12px;
+        padding: 15px 8px;
+    }
+    
+    .menu-item {
+        padding: 15px;
+        flex-direction: column;
+        gap: 12px;
+    }
+    
+    .item-name {
+        font-size: 16px;
+    }
+    
+    .item-desc {
+        font-size: 12px;
+    }
+    
+    .item-price {
+        font-size: 18px;
+        align-self: center;
+        margin: 0;
+    }
+    
+    .size-option {
+        font-size: 12px;
+        padding: 8px 10px;
+    }
+    
+    .size-selector {
+        gap: 4px;
+        margin-top: 8px;
+    }
+    
+    .add-btn {
+        align-self: center;
+        width: 40px;
+        height: 40px;
+        font-size: 18px;
+    }
+    
+    .cart-item {
+        padding: 15px;
+        flex-direction: column;
+        gap: 10px;
+        text-align: center;
+    }
+    
+    .cart-item-actions {
+        justify-content: center;
+    }
+    
+    .cart-item-price {
+        margin: 0;
+    }
+    
+    .cart-total {
+        padding: 20px 15px;
+    }
+    
+    .total-line {
+        font-size: 20px;
+    }
+    
+    .whatsapp-btn, .pickup-btn {
+        padding: 16px;
+        font-size: 16px;
+    }
+    
+    .balance {
+        position: relative;
+        top: auto;
+        right: auto;
+        margin-top: 10px;
+        display: inline-block;
+    }
+}
+
+/* Стили для скроллбара */
+.cart-items::-webkit-scrollbar {
+    width: 6px;
+}
+
+.cart-items::-webkit-scrollbar-track {
+    background: rgba(245, 230, 211, 0.5);
+    border-radius: 3px;
+}
+
+.cart-items::-webkit-scrollbar-thumb {
+    background: #D2691E;
+    border-radius: 3px;
+}
+
+.cart-items::-webkit-scrollbar-thumb:hover {
+    background: #8B4513;
+}

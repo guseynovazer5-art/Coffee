@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mountain Brew Coffee House</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="app">
+        <!-- Шапка -->
+        <header class="header">
+            <div class="logo">
+                <h1>MOUNTAIN BREW</h1>
+                <p>COFFEE HOUSE</p>
+            </div>
+            <div class="balance">Сумма: <span id="balance">0</span> ₽</div>
+        </header>
+
+        <!-- Вкладки -->
+        <div class="tabs">
+            <button class="tab-btn active" data-tab="popular">Популярное</button>
+            <button class="tab-btn" data-tab="classic">Классика</button>
+            <button class="tab-btn" data-tab="alternative">Альтернативное</button>
+            <button class="tab-btn" data-tab="cart">🛒 <span id="cart-count">0</span></button>
+        </div>
+
+        <!-- Контент вкладок -->
+        <div class="tab-content">
+            <!-- Популярное -->
+            <div id="popular" class="tab-pane active">
+                <div class="category">
+                    <h2>🔥 ПОПУЛЯРНОЕ</h2>
+                    <div class="menu-grid">
+                        <div class="menu-item" data-name="Американо" data-base-price="180" data-desc="Классический черный кофе">
+                            <div class="item-info">
+                                <span class="item-name">☕ Американо</span>
+                                <span class="item-desc">Классический черный кофе</span>
+                                <div class="size-selector">
+                                    <label class="size-option">
+                                        <input type="radio" name="americano-size" value="0.2" checked>
+                                        <span>0.2л - 180₽</span>
+                                    </label>
+                                    <label class="size-option">
+                                        <input type="radio" name="americano-size" value="0.3">
+                                        <span>0.3л - 200₽</span>
+                                    </label>
+                                    <label class="size-option">
+                                        <input type="radio" name="americano-size" value="0.4">
+                                        <span>0.4л - 220₽</span>
+                                    </label>
+                                </div>
+                            </div>
+                            <button class="add-btn" onclick="addToCartWithSize(this)">+</button>
+                        </div>
+                        
+                        <div class="menu-item" data-name="Капучино" data-base-price="200" data-desc="Идеальное соотношение кофе и молока">
+                            <div class="item-info">
+                                <span class="item-name">🥛 Капучино</span>
+                                <span class="item-desc">Идеальное соотношение кофе и молока</span>
+                                <div class="size-selector">
+                                    <label class="size-option">
+                                        <input type="radio" name="cappuccino-size" value="0.2" checked>
+                                        <span>0.2л - 200₽</span>
+                                    </label>
+                                    <label class="size-option">
+                                        <input type="radio" name="cappuccino-size" value="0.3">
+                                        <span>0.3л - 230₽</span>
+                                    </label>
+                                    <label class="size-option">
+                                        <input type="radio" name="cappuccino-size" value="0.4">
+                                        <span>0.4л - 260₽</span>
+                                    </label>
+                                </div>
+                            </div>
+                            <button class="add-btn" onclick="addToCartWithSize(this)">+</button>
+                        </div>
+                        
+                        <div class="menu-item" data-name="Латте" data-base-price="220" data-desc="Нежный кофе с молочной пенкой">
+                            <div class="item-info">
+                                <span class="item-name">🍶 Латте</span>
+                                <span class="item-desc">Нежный кофе с молочной пенкой</span>
+                                <div class="size-selector">
+                                    <label class="size-option">
+                                        <input type="radio" name="latte-size" value="0.2" checked>
+                                        <span>0.2л - 220₽</span>
+                                    </label>
+                                    <label class="size-option">
+                                        <input type="radio" name="latte-size" value="0.3">
+                                        <span>0.3л - 250₽</span>
+                                    </label>
+                                    <label class="size-option">
+                                        <input type="radio" name="latte-size" value="0.4">
+                                        <span>0.4л - 280₽</span>
+                                    </label>
+                                </div>
+                            </div>
+                            <button class="add-btn" onclick="addToCartWithSize(this)">+</button>
+                        </div>
+                        
+                        <div class="menu-item" data-name="Раф кофе" data-base-price="250" data-desc="Взбитый кофе со сливками">
+                            <div class="item-info">
+                                <span class="item-name">✨ Раф кофе</span>
+                                <span class="item-desc">Взбитый кофе со сливками</span>
+                                <div class="size-selector">
+                                    <label class="size-option">
+                                        <input type="radio" name="raf-size" value="0.2" checked>
+                                        <span>0.2л - 250₽</span>
+                                    </label>
+                                    <label class="size-option">
+                                        <input type="radio" name="raf-size" value="0.3">
+                                        <span>0.3л - 280₽</span>
+                                    </label>
+                                    <label class="size-option">
+                                        <input type="radio" name="raf-size" value="0.4">
+                                        <span>0.4л - 310₽</span>
+                                    </label>
+                                </div>
+                            </div>
+                            <button class="add-btn" onclick="addToCartWithSize(this)">+</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Классика -->
+            <div id="classic" class="tab-pane">
+                <div class="category">
+                    <h2>👑 КЛАССИКА КОФЕ</h2>
+                    <div class="menu-grid">
+                        <div class="menu-item" data-name="Эспрессо" data-base-price="150" data-desc="Концентрированный черный кофе">
+                            <div class="item-info">
+                                <span class="item-name">⚫ Эспрессо</span>
+                                <span class="item-desc">Концентрированный черный кофе</span>
+                                <div class="size-selector">
+                                    <label class="size-option">
+                                        <input type="radio" name="espresso-size" value="0.2" checked>
+                                        <span>0.2л - 150₽</span>
+                                    </label>
+                                </div>
+                            </div>
+                            <button class="add-btn" onclick="addToCartWithSize(this)">+</button>
+                        </div>
+                        
+                        <div class="menu-item" data-name="Американо" data-base-price="180" data-desc="Разбавленный эспрессо с водой">
+                            <div class="item-info">
+                                <span class="item-name">☕ Американо</span>
+                                <span class="item-desc">Разбавленный эспрессо с водой</span>
+                                <div class="size-selector">
+                                    <label class="size-option">
+                                        <input type="radio" name="americano-classic-size" value="0.2" checked>
+                                        <span>0.2л - 180₽</span>
+                                    </label>
+                                    <label class="size-option">
+                                        <input type="radio" name="americano-classic-size" value="0.3">
+                                        <span>0.3л - 200₽</span>
+                                    </label>
+                                    <label class="size-option">
+                                        <input type="radio" name="americano-classic-size" value="0.4">
+                                        <span>0.4л - 220₽</span>
+                                    </label>
+                                </div>
+                            </div>
+                            <button class="add-btn" onclick="addToCartWithSize(this)">+</button>
+                        </div>
+                        
+                        <div class="menu-item" data-name="Капучино" data-base-price="200" data-desc="Кофе с молоком и плотной пенкой">
+                            <div class="item-info">
+                                <span class="item-name">🥛 Капучино</span>
+                                <span class="item-desc">Кофе с молоком и плотной пенкой</span>
+                                <div class="size-selector">
+                                    <label class="size-option">
+                                        <input type="radio" name="cappuccino-classic-size" value="0.2" checked>
+                                        <span>0.2л - 200₽</span>
+                                    </label>
+                                    <label class="size-option">
+                                        <input type="radio" name="cappuccino-classic-size" value="0.3">
+                                        <span>0.3л - 230₽</span>
+                                    </label>
+                                    <label class="size-option">
+                                        <input type="radio" name="cappuccino-classic-size" value="0.4">
+                                        <span>0.4л - 260₽</span>
+                                    </label>
+                                </div>
+                            </div>
+                            <button class="add-btn" onclick="addToCartWithSize(this)">+</button>
+                        </div>
+                        
+                        <div class="menu-item" data-name="Латте" data-base-price="220" data-desc="Больше молока, мягкий вкус">
+                            <div class="item-info">
+                                <span class="item-name">🍶 Латте</span>
+                                <span class="item-desc">Больше молока, мягкий вкус</span>
+                                <div class="size-selector">
+                                    <label class="size-option">
+                                        <input type="radio" name="latte-classic-size" value="0.2" checked>
+                                        <span>0.2л - 220₽</span>
+                                    </label>
+                                    <label class="size-option">
+                                        <input type="radio" name="latte-classic-size" value="0.3">
+                                        <span>0.3л - 250₽</span>
+                                    </label>
+                                    <label class="size-option">
+                                        <input type="radio" name="latte-classic-size" value="0.4">
+                                        <span>0.4л - 280₽</span>
+                                    </label>
+                                </div>
+                            </div>
+                            <button class="add-btn" onclick="addToCartWithSize(this)">+</button>
+                        </div>
+                        
+                        <div class="menu-item" data-name="Флэт Уайт" data-base-price="230" data-desc="Эспрессо с тонкой молочной пенкой">
+                            <div class="item-info">
+                                <span class="item-name">⚪ Флэт Уайт</span>
+                                <span class="item-desc">Эспрессо с тонкой молочной пенкой</span>
+                                <div class="size-selector">
+                                    <label class="size-option">
+                                        <input type="radio" name="flatwhite-size" value="0.2" checked>
+                                        <span>0.2л - 230₽</span>
+                                    </label>
+                                    <label class="size-option">
+                                        <input type="radio" name="flatwhite-size" value="0.3">
+                                        <span>0.3л - 260₽</span>
+                                    </label>
+                                </div>
+                            </div>
+                            <button class="add-btn" onclick="addToCartWithSize(this)">+</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Альтернативное молоко -->
+            <div id="alternative" class="tab-pane">
+                <div class="category">
+                    <h2>🌱 АЛЬТЕРНАТИВНОЕ МОЛОКО</h2>
+                    <div class="menu-grid">
+                        <div class="menu-item" data-name="Капучино на миндальном" data-base-price="240" data-desc="С нежным ореховым вкусом">
+                            <div class="item-info">
+                                <span class="item-name">🥛 Капучино (миндальное)</span>
+                                <span class="item-desc">С нежным ореховым вкусом</span>
+                                <div class="size-selector">
+                                    <label class="size-option">
+                                        <input type="radio" name="cappuccino-almond-size" value="0.2" checked>
+                                        <span>0.2л - 240₽</span>
+                                    </label>
+                                    <label class="size-option">
+                                        <input type="radio" name="cappuccino-almond-size" value="0.3">
+                                        <span>0.3л - 270₽</span>
+                                    </label>
+                                    <label class="size-option">
+                                        <input type="radio" name="cappuccino-almond-size" value="0.4">
+                                        <span>0.4л - 300₽</span>
+                                    </label>
+                                </div>
+                            </div>
+                            <button class="add-btn" onclick="addToCartWithSize(this)">+</button>
+                        </div>
+                        
+                        <div class="menu-item" data-name="Латте на кокосовом" data-base-price="240" data-desc="С тропическими нотками">
+                            <div class="item-info">
+                                <span class="item-name">🥥 Латте (кокосовое)</span>
+                                <span class="item-desc">С тропическими нотками</span>
+                                <div class="size-selector">
+                                    <label class="size-option">
+                                        <input type="radio" name="latte-coconut-size" value="0.2" checked>
+                                        <span>0.2л - 240₽</span>
+                                    </label>
+                                    <label class="size-option">
+                                        <input type="radio" name="latte-coconut-size" value="0.3">
+                                        <span>0.3л - 270₽</span>
+                                    </label>
+                                    <label class="size-option">
+                                        <input type="radio" name="latte-coconut-size" value="0.4">
+                                        <span>0.4л - 300₽</span>
+                                    </label>
+                                </div>
+                            </div>
+                            <button class="add-btn" onclick="addToCartWithSize(this)">+</button>
+                        </div>
+                        
+                        <div class="menu-item" data-name="Капучино на овсяном" data-base-price="240" data-desc="Сливочный и натуральный">
+                            <div class="item-info">
+                                <span class="item-name">🌾 Капучино (овсяное)</span>
+                                <span class="item-desc">Сливочный и натуральный</span>
+                                <div class="size-selector">
+                                    <label class="size-option">
+                                        <input type="radio" name="cappuccino-oat-size" value="0.2" checked>
+                                        <span>0.2л - 240₽</span>
+                                    </label>
+                                    <label class="size-option">
+                                        <input type="radio" name="cappuccino-oat-size" value="0.3">
+                                        <span>0.3л - 270₽</span>
+                                    </label>
+                                    <label class="size-option">
+                                        <input type="radio" name="cappuccino-oat-size" value="0.4">
+                                        <span>0.4л - 300₽</span>
+                                    </label>
+                                </div>
+                            </div>
+                            <button class="add-btn" onclick="addToCartWithSize(this)">+</button>
+                        </div>
+                        
+                        <div class="menu-item" data-name="Раф на соевом" data-base-price="270" data-desc="Нежный взбитый кофе">
+                            <div class="item-info">
+                                <span class="item-name">✨ Раф (соевое)</span>
+                                <span class="item-desc">Нежный взбитый кофе</span>
+                                <div class="size-selector">
+                                    <label class="size-option">
+                                        <input type="radio" name="raf-soy-size" value="0.2" checked>
+                                        <span>0.2л - 270₽</span>
+                                    </label>
+                                    <label class="size-option">
+                                        <input type="radio" name="raf-soy-size" value="0.3">
+                                        <span>0.3л - 300₽</span>
+                                    </label>
+                                    <label class="size-option">
+                                        <input type="radio" name="raf-soy-size" value="0.4">
+                                        <span>0.4л - 330₽</span>
+                                    </label>
+                                </div>
+                            </div>
+                            <button class="add-btn" onclick="addToCartWithSize(this)">+</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Корзина -->
+            <div id="cart" class="tab-pane">
+                <div class="cart-header">
+                    <h2>🛒 ВАША КОРЗИНА</h2>
+                    <button class="clear-btn" onclick="clearCart()">Очистить</button>
+                </div>
+                
+                <!-- Информационное сообщение -->
+                <div class="cart-info">
+                    <div style="text-align: center; background: rgba(255, 255, 255, 0.8); padding: 12px; border-radius: 10px; margin-bottom: 20px; border-left: 4px solid #27ae60;">
+                        <p style="color: #2c3e50; font-size: 14px; margin: 0; font-weight: 500;">
+                            💡 <strong>Автоочистка корзины</strong><br>
+                            Корзина автоматически очищается после заказа и при каждом новом посещении
+                        </p>
+                    </div>
+                </div>
+                
+                <div id="cart-items" class="cart-items">
+                    <!-- Тут будут товары -->
+                </div>
+                <div class="cart-total">
+                    <div class="total-line">
+                        <span>Итого:</span>
+                        <span id="total-price">0 ₽</span>
+                    </div>
+                    <button class="whatsapp-btn" onclick="sendToWhatsApp()">
+                        📱 Заказать через WhatsApp
+                    </button>
+                    <button class="pickup-btn" onclick="pickupOrder()">
+                        🏃 Самовывоз у стойки
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Уведомления -->
+    <div id="notification" class="notification"></div>
+
+    <script src="app.js"></script>
+</body>
+</html>
